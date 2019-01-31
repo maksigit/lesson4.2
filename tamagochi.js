@@ -1,12 +1,13 @@
-function Essence(name) {
+function Essence(name, legs) {
+  alert('do not feed more than 200');
   this.name = name;
+  this.legs = legs;
 
   let healts = 100;
 
   let timerId;
 
   function start() {
-    alert('do not feed more than 200');
     timerId = setInterval(function func() {
       if (healts > 200) {
         alert('too much food, pet ran away')
@@ -17,6 +18,7 @@ function Essence(name) {
         healts -= 5;
       } else {
         alert('game over');
+        clearInterval(timerId);
       }
     }, 3000);
   }
@@ -33,7 +35,7 @@ function Essence(name) {
     start()
   };
 
-  this.walk = function() {
+  this.walk = function () {
     healts -= 10;
     clearInterval(timerId);
     start()
@@ -52,13 +54,17 @@ function Essence(name) {
   };
 
   this.jump = function () {
-    healts -= 20;
-    clearInterval(timerId);
-    start()
+    if (this.legs) {
+      healts -= 20;
+      clearInterval(timerId);
+      start()
+    } else {
+      alert("Create Pet with Legs")
+    }
   };
 }
 
-let rabbit = new Essence('bunny');
+let rabbit = new Essence('bunny', 4);
 
 
 
