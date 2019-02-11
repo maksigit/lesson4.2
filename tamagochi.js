@@ -1,5 +1,6 @@
 function Essence(name, legs) {
   alert('do not feed more than 200');
+
   this.name = name;
   this.legs = legs;
 
